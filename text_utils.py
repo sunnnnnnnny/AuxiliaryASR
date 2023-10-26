@@ -4,6 +4,8 @@ import os.path as osp
 import pandas as pd
 
 DEFAULT_DICT_PATH = osp.join('word_index_dict.txt')
+
+
 class TextCleaner:
     def __init__(self, word_index_dict_path=DEFAULT_DICT_PATH):
         self.word_index_dictionary = self.load_dictionary(word_index_dict_path)
