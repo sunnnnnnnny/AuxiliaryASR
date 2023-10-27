@@ -18,13 +18,15 @@ filename2piny = {}
 with open("/data8/master_dataset_model_zhangyuqiang/aishell3_44k/train/content.txt", "r") as log:
     lines = log.readlines()
     for line in lines:
-        filename, sentence = line.strip().split(" ", maxsplit=1)
+        #import ipdb
+        #ipdb.set_trace()
+        filename, sentence = line.strip().split("\t", maxsplit=1)
         piny = " ".join(sentence.split(" ")[1::2])
         filename2piny[filename] = piny
 with open("/data8/master_dataset_model_zhangyuqiang/aishell3_44k/test/content.txt", "r") as log:
     lines = log.readlines()
     for line in lines:
-        filename, sentence = line.strip().split(" ", maxsplit=1)
+        filename, sentence = line.strip().split("\t", maxsplit=1)
         piny = " ".join(sentence.split(" ")[1::2])
         filename2piny[filename] = piny
 
@@ -49,7 +51,6 @@ train_path_list, eval_path_list, train_label_list, eval_label_list = train_test_
                                                                                       test_size=0.2, random_state=616)
 assert len(train_path_list) == len(train_label_list)
 assert len(eval_path_list) == len(eval_label_list)
-
 with open(os.path.join(data_dir, "train_list_aishell3.txt"), "w") as train_log:
     for idx in range(len(train_path_list)):
         path = train_path_list[idx]
